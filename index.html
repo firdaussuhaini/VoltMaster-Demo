@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VoltMaster Demo</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #020617;
+  color: white;
+}
+
+.app {
+  max-width: 500px;
+  margin: auto;
+  padding: 15px;
+}
+
+h1 {
+  text-align: center;
+  color: #38bdf8;
+}
+
+.sub {
+  text-align: center;
+  color: #94a3b8;
+  margin-bottom: 15px;
+}
+
+.badge {
+  text-align: center;
+  background: #f59e0b;
+  color: black;
+  padding: 6px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.card {
+  background: #111827;
+  padding: 16px;
+  margin-bottom: 14px;
+  border-radius: 14px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 6px 0;
+  border-radius: 10px;
+  border: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background: #38bdf8;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+p {
+  color: #22c55e;
+  font-weight: bold;
+}
+.lock {
+  color: #f87171;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<h1>⚡ VoltMaster</h1>
+<div class="badge">DEMO VERSION – LIMITED ACCESS</div>
+<p class="sub">Upgrade to unlock full features</p>
+
+<div class="card">
+<h2>Ohm’s Law</h2>
+<input id="v" placeholder="Voltage">
+<input id="i" placeholder="Current">
+<button onclick="calcOhm()">Calculate</button>
+<p id="r1"></p>
+</div>
+
+<div class="card">
+<h2>Power</h2>
+<input id="pv" placeholder="Voltage">
+<input id="pi" placeholder="Current">
+<button onclick="calcPower()">Calculate</button>
+<p id="r2"></p>
+</div>
+
+<div class="card">
+<h2>Voltage Drop 🔒</h2>
+<input disabled placeholder="Locked">
+<button onclick="lockMsg()">Calculate</button>
+<p id="vdResult" class="lock"></p>
+</div>
+
+<div class="card">
+<h2>Cable Size 🔒</h2>
+<input disabled placeholder="Locked">
+<button onclick="lockMsg()">Calculate</button>
+<p id="cbResult" class="lock"></p>
+</div>
+
+<div class="card">
+<h2>MCB 🔒</h2>
+<input disabled placeholder="Locked">
+<button onclick="lockMsg()">Calculate</button>
+<p id="mcbResult" class="lock"></p>
+</div>
+
+<div class="card">
+<h2>Load Estimation 🔒</h2>
+<input disabled placeholder="Locked">
+<button onclick="lockMsg()">Calculate</button>
+<p id="loadResult" class="lock"></p>
+</div>
+
+</div>
+
+<script>
+
+function calcOhm(){
+let V = parseFloat(document.getElementById("v").value);
+let I = parseFloat(document.getElementById("i").value);
+if(!V || !I){r1.innerHTML="Fill values"; return;}
+r1.innerHTML="R = "+(V/I).toFixed(2)+" Ω";
+}
+
+function calcPower(){
+let V = parseFloat(document.getElementById("pv").value);
+let I = parseFloat(document.getElementById("pi").value);
+if(!V || !I){r2.innerHTML="Fill values"; return;}
+r2.innerHTML="P = "+(V*I).toFixed(2)+" W";
+}
+
+function lockMsg(){
+vdResult.innerHTML="🔒 Unlock full version to use this feature";
+cbResult.innerHTML="🔒 Unlock full version to use this feature";
+mcbResult.innerHTML="🔒 Unlock full version to use this feature";
+loadResult.innerHTML="🔒 Unlock full version to use this feature";
+}
+
+</script>
+
+</body>
+</html>
